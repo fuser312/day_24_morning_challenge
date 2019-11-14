@@ -50,9 +50,9 @@ int overlappingRectangles(List<Map> RecordOne, List<Map> RecordTwo){
 
   int area = (fourth - third) * (second - first);
 
-  if(fourth >= third && second >= first){
-    return area;
-  }
+
+  return area;
+
 
 
 
@@ -72,4 +72,6 @@ main() {
     {'x': 5, 'y': 5}
   ],
   ));
+
+  print(overlappingRectangles([{'x': -1, 'y': -1 },{'x': -3, 'y': -4}], [{'x':-2, 'y': -3}, {'x': -5, 'y': -7}]));
 }
