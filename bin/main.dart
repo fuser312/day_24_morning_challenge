@@ -42,6 +42,7 @@ int overlappingRectangles(List<Map> RecordOne, List<Map> RecordTwo){
   int cord7 = RecordTwo[1]['x'];
   int cord8 = RecordTwo[1]['y'];
 
+
   int first = max(cord1, cord5);
   int second = min(cord3, cord7);
   int third = max(cord2, cord6);
@@ -52,7 +53,7 @@ int overlappingRectangles(List<Map> RecordOne, List<Map> RecordTwo){
   if(fourth >= third && second >= first){
     return area;
   }
-  
+
 
 
 
@@ -63,7 +64,12 @@ main() {
   print(isPanDigital(98140723568910));
   print(isPanDigital(76492728));
 
-  print(overlappingRectangles(
-    [{ 'x': 2, 'y': 1 }, { 'x': 5, 'y': 5 }],
-    [{ 'x': 3, 'y': 2 }, { 'x': 5, 'y': 7 }]));
+  print(overlappingRectangles([
+    {'x': -1, 'y': -1},
+    {'x': 1, 'y': 1}
+  ], [
+    {'x': 0, 'y': 0},
+    {'x': 5, 'y': 5}
+  ],
+  ));
 }
