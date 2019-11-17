@@ -11,12 +11,7 @@ import 'dart:math';
 //  isPandigital(98140723568910) ➞ true
 
 bool isPanDigital(int num){
-  if(num.toString().contains('0')&& num.toString().contains('1') && num.toString().contains('2')&& num.toString().contains('3')&& num.toString().contains('4')&& num.toString().contains('5')&& num.toString().contains('6')&& num.toString().contains('7')&& num.toString().contains('8')&& num.toString().contains('9')){
-    return true;
-  }
-  else{
-    return false;
-  }
+  return num.toString().split('').toSet().length== 10;
 }
 
 // Challenge 3
@@ -31,33 +26,38 @@ bool isPanDigital(int num){
 //    [{ x: 3, y: 2 }, { x: 5, y: 7 }]
 //  ) ➞ 6
 
-int overlappingRectangles(List<Map> RecordOne, List<Map> RecordTwo){
-  int cord1 = RecordOne[0]['x'];
-  int cord2 = RecordOne[0]['y'];
-  int cord3 = RecordOne[1]['x'];
-  int cord4 = RecordOne[1]['y'];
-
-  int cord5 = RecordTwo[0]['x'];
-  int cord6 = RecordTwo[0]['y'];
-  int cord7 = RecordTwo[1]['x'];
-  int cord8 = RecordTwo[1]['y'];
-
-
-  int first = max(cord1, cord5);
-  int second = min(cord3, cord7);
-  int third = max(cord2, cord6);
-  int fourth = min(cord4, cord8);
-
-  int area = (fourth - third) * (second - first);
-
-
-  return area;
 
 
 
+int overlappingRectangles(List<Map> Rec1, List<Map> Rec2){
+  int rec1x1 = Rec1[0]['x'];
+  int rec1y1 = Rec1[0]['y'];
+  int rec1x2 = Rec1[1]['x'];
+  int rec1y2 = Rec1[1]['y'];
 
+  int rec2x1 = Rec2[0]['x'];
+  int rec2y1 = Rec2[0]['y'];
+  int rec2x2 = Rec2[1]['x'];
+  int rec2y2 = Rec2[1]['y'];
 
+  Point rec1point1 = Point(rec1x1, rec1y1);
+  Point rec1point2 = Point(rec1x2, rec1y2);
+  Point rec2point1 = Point(rec2x1, rec2y1);
+  Point rec2point2 = Point(rec2x2, rec2y2);
 
+  if (rec1point1.x > rec2point2.x || rec2point1.x > rec1point2.x) {
+    return 0;
+  }
+
+  else if(rec1point1.y > rec2point2.y || rec2point1.y > rec1point2.y){
+    return 0;
+  }
+
+  else {
+    int area = (min(rec1y2, rec2y2) - max(rec1y1, rec2y1)) *
+        (min(rec1x2, rec2x2) - max(rec1x1, rec2x1));
+    return area;
+  }
 }
 
 main() {
